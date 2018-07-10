@@ -1,0 +1,26 @@
+- name: create deployment config
+  k8s_extensions_v1beta1_deployment:
+   name: kafka-source
+   namespace: '{{ namespace }}'
+   labels:
+     app: event-gateway
+     service: kafka-source
+   replicas: 1
+   spec_template_metadata_labels:
+     app: event-gateway
+     service: kafka-source
+   containers:
+   - env:
+     image: docker.io/streamzi/gw-kafka-source:latest # replace with your application image
+     name: kafka-source
+
+- name: create kafka-source service
+  k8s_v1_service:
+   name: kafka-source
+   namespace: '{{ namespace }}'
+   labels:
+     app: event-gateway
+     service: kafka-source
+   selector:
+     app: event-gateway
+     service: kafka-source
