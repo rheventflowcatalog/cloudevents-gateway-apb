@@ -1,0 +1,17 @@
+FROM ansibleplaybookbundle/apb-base
+
+LABEL "com.redhat.apb.spec"=\
+"dmVyc2lvbjogMS4wCm5hbWU6IGV2ZW50LWdhdGV3YXkKZGVzY3JpcHRpb246IENsb3VkRXZlbnQg\
+R2F0ZXdheSBhbmQgUm91dGVyCmJpbmRhYmxlOiBGYWxzZQphc3luYzogb3B0aW9uYWwKbWV0YWRh\
+dGE6CiAgZGlzcGxheU5hbWU6IENsb3VkRXZlbnQgR2F0ZXdheQogIGxvbmdEZXNjcmlwdGlvbjog\
+IkFuIEFQQiBkZXBsb3lpbmcgYSBDbG91ZEV2ZW50IHJvdXRlciBhbmQgZ2F0ZXdheSwgdGhyb3Vn\
+aCBPcGVuc2hpZnQiCiAgaW1hZ2VVcmw6ICJodHRwczovL2F2YXRhcnMyLmdpdGh1YnVzZXJjb250\
+ZW50LmNvbS91LzMyMDc2ODI4P3M9MjAwJnY9NCIKICBwcm92aWRlckRpc3BsYXlOYW1lOiAiUmVk\
+IEhhdCwgSW5jLiIKcGxhbnM6CiAgLSBuYW1lOiBkZWZhdWx0CiAgICBkZXNjcmlwdGlvbjogVGhp\
+cyBkZWZhdWx0IHBsYW4gZGVwbG95cyBldmVudC1nYXRld2F5LWFwYgogICAgZnJlZTogVHJ1ZQog\
+ICAgbWV0YWRhdGE6IHt9CiAgICBwYXJhbWV0ZXJzOiBbXQ=="
+
+COPY playbooks /opt/apb/actions
+COPY roles /opt/ansible/roles
+RUN chmod -R g=u /opt/{ansible,apb}
+USER apb

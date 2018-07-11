@@ -1,0 +1,16 @@
+version: 1.0
+name: event-gateway
+description: CloudEvent Gateway and Router
+bindable: False
+async: optional
+metadata:
+  displayName: CloudEvent Gateway
+  longDescription: "An APB deploying a CloudEvent router and gateway, through Openshift"
+  imageUrl: "https://avatars2.githubusercontent.com/u/32076828?s=200&v=4"
+  providerDisplayName: "Red Hat, Inc."
+plans:
+  - name: default
+    description: This default plan deploys event-gateway-apb
+    free: True
+    metadata: {}
+    parameters: []
