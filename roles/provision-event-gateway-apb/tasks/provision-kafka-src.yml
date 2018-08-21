@@ -12,4 +12,5 @@
    containers:
    - env:
      image: docker.io/streamzi/gw-kafka-source:latest
+     imagePullPolicy: IfNotPresent
      name: kafka-source
