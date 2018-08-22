@@ -11,7 +11,8 @@
      service: http-source
    containers:
    - env:
-     image: docker.io/streamzi/gw-http-source:latest # replace with your application image
+     image: docker.io/streamzi/gw-http-source:latest
+     imagePullPolicy: IfNotPresent
      name: http-source
      ports:
      - container_port: 8081
