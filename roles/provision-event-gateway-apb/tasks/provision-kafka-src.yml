@@ -11,6 +11,6 @@
      service: kafka-source
    containers:
    - env:
-     image: docker.io/streamzi/gw-kafka-source:latest
+     image: docker.io/streamzi/cloudevents-gateway-kafka-source:latest
      imagePullPolicy: IfNotPresent
      name: kafka-source

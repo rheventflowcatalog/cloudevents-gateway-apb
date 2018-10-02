@@ -11,7 +11,7 @@
      service: http-source
    containers:
    - env:
-     image: docker.io/streamzi/gw-http-source:latest
+     image: docker.io/streamzi/cloudevents-gateway-http-source:latest
      imagePullPolicy: IfNotPresent
      name: http-source
      ports:
