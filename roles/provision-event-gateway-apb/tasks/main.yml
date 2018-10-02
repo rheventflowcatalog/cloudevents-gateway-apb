@@ -1,14 +1,16 @@
-- name: create Input Topic config map
-  k8s_v1_config_map:
-    name: api-topic
-    namespace: '{{ namespace }}'
-    labels:
-      strimzi.io/kind: topic
-      strimzi.io/cluster: my-cluster
-    data:
-      name: "gw.global.input.cloudevents"
-      partitions: "1"
-      replicas: "1"
+- name: Login As Super User
+  command: "oc login -u {{ admin_user }} -p {{ admin_password }}"
+
+- name: "Create Kafka Topic CR yaml"
+  template:
+    src: kafka-topic.yaml.j2
+    dest: /tmp/kafka-topic.yaml
+
+- name: "Create Kafka Topic"
+  shell: "oc create -f /tmp/kafka-topic.yaml -n {{ namespace }}"
+
+- name: "Delete Kafka Topic Template File"
+  file: path=/tmp/kafka-topic.yaml state=absent
 
 - include_tasks: provision-http-src.yml 
 - include_tasks: provision-kafka-src.yml
